@@ -1,0 +1,28 @@
+{
+  "name": "discord-activity-minimal",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "build": "tsc --noEmit && vite build",
+    "activity": "npm run build && vite preview --host 127.0.0.1 --port 5173 --strictPort",
+    "tunnel": "cloudflared tunnel --protocol http2 --edge-ip-version 4 --url http://127.0.0.1:5173 --http-host-header localhost",
+    "bot": "node --env-file-if-exists=.env bot.mjs"
+  },
+  "dependencies": {
+    "@discord/embedded-app-sdk": "^2.5.0",
+    "discord.js": "^14.28.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "~5.9.3",
+    "vite": "^8.3.8"
+  }
+}
